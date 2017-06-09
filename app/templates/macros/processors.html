@@ -1,0 +1,26 @@
+{% macro text(value) %}
+<p class="copy">{{ value }}</p>
+{% endmacro %}
+
+{% macro read_more(value) %}
+<p class="copy">
+  <span>
+  <a class="read-more-link" href="{{ value }}">Read this story <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg></a></span>
+</p>
+{% endmacro %}
+
+{% macro image(value) %}
+<img src="{{ static('assets/images/' + value) }}">
+{% endmacro %}
+
+{% macro image_srcset(value) %}
+<img src="{{ static('assets/images/' + value + '-2400.jpg') }}" srcset="{{ static('assets/images/' + value + '-320.jpg') }} 320w, {{ static('assets/images/' + value + '-600.jpg') }} 600w, {{ static('assets/images/' + value + '-1200.jpg') }} 1200w, {{ static('assets/images/' + value + '-2000.jpg') }} 2000w, {{ static('assets/images/' + value + '-2400.jpg') }} 2400w">
+{% endmacro %}
+
+{% macro list(value) %}
+<ul>
+  {% for item in value %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endmacro %}

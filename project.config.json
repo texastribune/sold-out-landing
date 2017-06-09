@@ -1,0 +1,14 @@
+{
+  "bucket": "moose.texastribune.org",
+  "folder": "sold-out",
+  "rawAssetsFolder": "raw_assets",
+  "dataDir": "./data",
+  "assetsDir": "./app/assets",
+  "srcDir": "./app",
+  "distDir": "./dist",
+  "files": [{
+    "fileId": "1-71HPgUuvpK5fdE4uCcSjwll655y8KF-fVr2UdIgC0k",
+    "type": "doc",
+    "name": "story"
+  }]
+}

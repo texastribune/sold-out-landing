@@ -1,0 +1,181 @@
+{#
+  If you are creating a graphic, you'll need to change what template this page
+  is inheriting from below. Likely, you are going to want to change `base.html`
+  to `base-embed.html`. You will also need to change the "main" script webpack
+  is looking for in `webpack.config.js`. The template for a graphic can be
+  found below content block - replace what's in there as needed.
+#}
+
+{% extends 'base.html' %}
+{% import 'macros/shares.html' as shares %}
+{% from 'macros/prose.html' import prose %}
+
+{% set context = data.story %}
+
+{% block content %}
+
+<div class="header-container">
+  <figure class="header-image">
+    <img src="{{ static('assets/images/intro-2400.jpg') }}" srcset="{{ static('assets/images/intro-320.jpg') }} 320w, {{ static('assets/images/intro-600.jpg') }} 600w, {{ static('assets/images/intro-800.jpg') }} 800w, {{ static('assets/images/intro-1000.jpg') }} 1000w, {{ static('assets/images/intro-1200.jpg') }} 1200w, {{ static('assets/images/intro-2000.jpg') }} 2000w, {{ static('assets/images/intro-2400.jpg') }} 2400w">
+  </figure>
+  <header class="header-prose">
+    <h1 class="header-prose__title"><img class="header-logo" src="{{ static('assets/images/sold-out-logo.png') }}" alt="{{ context.title }}"></h1>
+    <div>
+      <p class="header-prose__subtitle">{{ context.subtitle }}</p>
+      <p class="header-prose__credit">A series by {{ context.authors[0] }}, {{ context.authors[1] }} and {{ context.authors[2] }}</p>
+    </div>
+  </header>
+</div>
+
+  <div class="container container--tight">
+    <div class="intro-prose freeform-copy">
+      {{ prose(context.intro_prose) }}
+    </div>
+  </div>
+
+  <div class="container container--tight">
+  <div class="story-bar"></div>
+  <p class="story-label">{{ context.problem.label }}</p>
+  {% for story in context.problem.stories %}
+    <div class="story">
+      <h2 class="story-title"><a href="{{ story.url }}">{{ story.title }}</a></h2>
+      <div class="prose freeform-copy">
+      {{ prose(story.prose) }}
+      </div>
+      <figure class="story-image">
+        <a href="{{ story.url }}">
+          {% if story.image %}
+          <img class="lazyload" data-src="{{ static('assets/images/' + story.image )}}">
+          {% elif story.image_srcset %}
+          <img class="lazyload" src="{{ static('assets/images/' + story.image_srcset + '-16.jpg') }}" data-src="{{ static('assets/images/' + story.image_srcset + '-2400.jpg') }}" data-srcset="{{ static('assets/images/' + story.image_srcset + '-320.jpg') }} 320w, {{ static('assets/images/' + story.image_srcset + '-600.jpg') }} 600w, {{ static('assets/images/' + story.image_srcset + '-800.jpg') }} 800w, {{ static('assets/images/' + story.image_srcset + '-1000.jpg') }} 1000w, {{ static('assets/images/' + story.image_srcset + '-1200.jpg') }} 1200w, {{ static('assets/images/' + story.image_srcset + '-2000.jpg') }} 2000w, {{ static('assets/images/' + story.image_srcset + '-2400.jpg') }} 2400w">
+          {% endif %}
+        </a>
+      </figure>
+    </div>
+  {% endfor %}
+
+  <div class="story-bar"></div>
+  <p class="story-label">{{ context.girls.label }}</p>
+  {% for story in context.girls.stories %}
+    <div class="story">
+      <h2 class="story-title"><a href="{{ story.url }}">{{ story.title }}</a></h2>
+      <div class="prose freeform-copy">
+      {{ prose(story.prose) }}
+      </div>
+      <figure class="story-image">
+        <a href="{{ story.url }}">
+          {% if story.image %}
+          <img class="lazyload" data-src="{{ static('assets/images/' + story.image )}}">
+          {% elif story.image_srcset %}
+          <img class="lazyload" src="{{ static('assets/images/' + story.image_srcset + '-16.jpg') }}" data-src="{{ static('assets/images/' + story.image_srcset + '-2400.jpg') }}" data-srcset="{{ static('assets/images/' + story.image_srcset + '-320.jpg') }} 320w, {{ static('assets/images/' + story.image_srcset + '-600.jpg') }} 600w, {{ static('assets/images/' + story.image_srcset + '-800.jpg') }} 800w, {{ static('assets/images/' + story.image_srcset + '-1000.jpg') }} 1000w, {{ static('assets/images/' + story.image_srcset + '-1200.jpg') }} 1200w, {{ static('assets/images/' + story.image_srcset + '-2000.jpg') }} 2000w, {{ static('assets/images/' + story.image_srcset + '-2400.jpg') }} 2400w">
+          {% endif %}
+        </a>
+      </figure>
+    </div>
+  {% endfor %}
+
+  <div class="story-bar"></div>
+  <p class="story-label">{{ context.scheme.label }}</p>
+  {% for story in context.scheme.stories %}
+    <div class="story">
+      <h2 class="story-title"><a href="{{ story.url }}">{{ story.title }}</a></h2>
+      <div class="prose freeform-copy">
+      {{ prose(story.prose) }}
+      </div>
+      <figure class="story-image">
+        <a href="{{ story.url }}">
+          {% if story.image %}
+          <img class="lazyload" data-src="{{ static('assets/images/' + story.image )}}">
+          {% elif story.image_srcset %}
+          <img class="lazyload" src="{{ static('assets/images/' + story.image_srcset + '-16.jpg') }}" data-src="{{ static('assets/images/' + story.image_srcset + '-2400.jpg') }}" data-srcset="{{ static('assets/images/' + story.image_srcset + '-320.jpg') }} 320w, {{ static('assets/images/' + story.image_srcset + '-600.jpg') }} 600w, {{ static('assets/images/' + story.image_srcset + '-800.jpg') }} 800w, {{ static('assets/images/' + story.image_srcset + '-1000.jpg') }} 1000w, {{ static('assets/images/' + story.image_srcset + '-1200.jpg') }} 1200w, {{ static('assets/images/' + story.image_srcset + '-2000.jpg') }} 2000w, {{ static('assets/images/' + story.image_srcset + '-2400.jpg') }} 2400w">
+          {% endif %}
+        </a>
+      </figure>
+    </div>
+  {% endfor %}
+
+  <div class="story-bar"></div>
+  <p class="story-label">{{ context.epilogue.label }}</p>
+  {% for story in context.epilogue.stories %}
+    <div class="story">
+      <h2 class="story-title"><a href="{{ story.url }}">{{ story.title }}</a></h2>
+      <div class="prose freeform-copy">
+      {{ prose(story.prose) }}
+      </div>
+      <figure class="story-image">
+        <a href="{{ story.url }}">
+          {% if story.image %}
+          <img class="lazyload" data-src="{{ static('assets/images/' + story.image )}}">
+          {% elif story.image_srcset %}
+          <img class="lazyload" src="{{ static('assets/images/' + story.image_srcset + '-16.jpg') }}" data-src="{{ static('assets/images/' + story.image_srcset + '-2400.jpg') }}" data-srcset="{{ static('assets/images/' + story.image_srcset + '-320.jpg') }} 320w, {{ static('assets/images/' + story.image_srcset + '-600.jpg') }} 600w, {{ static('assets/images/' + story.image_srcset + '-800.jpg') }} 800w, {{ static('assets/images/' + story.image_srcset + '-1000.jpg') }} 1000w, {{ static('assets/images/' + story.image_srcset + '-1200.jpg') }} 1200w, {{ static('assets/images/' + story.image_srcset + '-2000.jpg') }} 2000w, {{ static('assets/images/' + story.image_srcset + '-2400.jpg') }} 2400w">
+          {% endif %}
+        </a>
+      </figure>
+    </div>
+  {% endfor %}
+  </div>
+
+  <div class="container container--tight">
+    <div class="story-bar"></div>
+    <div class="intro-prose freeform-copy">
+      {{ prose(context.ending_prose) }}
+    </div>
+  </div>
+
+{% endblock content %}
+
+{#
+
+  <div class="story-bar"></div>
+  <p class="story-label">{{ story.label }}</p>
+
+<div class="app">
+  <h1 class="graphic-title">Lorem ipsum dolor sit amet</h1>
+  <p class="graphic-prose">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, eveniet, voluptatem. Debitis, deserunt, numquam. Omnis consectetur, voluptate, ipsam ad quasi tempore suscipit? Iusto nemo labore earum deleniti officiis minima nihil!</p>
+  <div id="graphic" class="graphic"></div>
+  <ul class="graphic-footer">
+    <li>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, porro.</li>
+    <li>Source: <a href="#">Lorem ipsum dolor sit</a></li>
+  </ul>
+</div>
+
+#}
+
+{% block scripts %}
+{{ super() }}
+<script defer src="{{ static('scripts/main.js') }}"></script>
+{% endblock scripts %}
+
+
+{#
+
+  <p class="article-byline">
+    <span class="article-author">By <a href="#">Super Cool Corgi</a></span>
+    <span class="article-pub-date"><time datetime="{{ context.pub_date }}">{{ apFormatDate(context.pub_date) }}</time></span>
+  </p>
+  <div class="article-shares">
+    <a class="button button--small button--facebook article-shares-button" href="{{ shares.facebook(CURRENT_PAGE_URL) }}" ga-on="click" ga-hit-type="social" ga-social-network="Facebook" ga-social-action="share">
+      <svg class="icon icon-facebook">
+        <use xlink:href="#icon-facebook"></use>
+      </svg>
+    </a>
+    <a class="button button--small button--twitter article-shares-button" href="{{ shares.twitter(CURRENT_PAGE_URL, '', '') }}" ga-on="click" ga-hit-type="social" ga-social-network="Twitter" ga-social-action="tweet">
+      <svg class="icon icon-twitter">
+        <use xlink:href="#icon-twitter"></use>
+      </svg>
+    </a>
+    <a class="button button--small button--yellow article-shares-button" href="{{ shares.email('The Texas Tribune', '\n\n' + CURRENT_PAGE_URL)}}" ga-on="click" ga-hit-type="social" ga-social-network="Email" ga-social-action="email">
+      <svg class="icon icon-envelope">
+        <use xlink:href="#icon-envelope"></use>
+      </svg>
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="intro-prose">
+      <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto consequuntur, blanditiis, eligendi hic exercitationem ab culpa! Optio fugiat architecto pariatur cum. <a href="#">Distinctio ab iusto temporibus</a>, deserunt quam placeat incidunt aspernatur!</p>
+      <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quasi labore, suscipit saepe. Officia dolor natus asperiores voluptatum, dolores eius unde eligendi. Praesentium placeat, aliquam ipsa, optio assumenda expedita sequi.</p>
+    </div>
+  </div>
+
+#}

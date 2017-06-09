@@ -1,0 +1,173 @@
+// Variables and mixins
+@import 'variables';
+@import 'mixins';
+@import 'functions';
+
+// Third-party libraries
+@import 'node_modules/sass-mq/mq';
+
+// Reset, overrides and utils
+@import 'reset';
+@import 'overrides';
+@import 'utils';
+@import 'grid';
+@import 'typography';
+@import 'buttons';
+@import 'icons';
+
+// Components
+@import 'components/site-header';
+@import 'components/footer';
+@import 'components/graphic';
+
+.header-container {
+  height: 70vh;
+  position: relative;
+  width: 100%;
+  margin-bottom: $gutter-double;
+  max-width: 100%;
+
+  @include mq($from: s) {
+    height: 80vh;
+  }
+}
+
+.header-image {
+  height: 100%;
+  width: 100%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    max-width: 100%;
+    vertical-align: bottom;
+  }
+}
+
+.header-logo {
+  width: to-rem(225);
+
+  @include mq($from: s) {
+    width: to-rem(300);
+  }
+}
+
+.header-prose {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  left: 0;
+  margin-bottom: $gutter-double;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+
+  a {
+    @include sold-out-uppercase-link;
+  }
+
+  @include mq($from: s) {
+    justify-content: center;
+    margin-bottom: 0;
+    margin-left: $gutter-quad;
+    width: 40%;
+  }
+}
+
+.header-prose__title {
+  margin-bottom: $gutter;
+
+  @include mq($from: s) {
+    margin-bottom: $gutter-double;
+  }
+}
+
+.header-prose__subtitle {
+  color: $color-white;
+  font-family: $font-sans-serif;
+  font-size: to-rem(18);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-subtitle;
+  margin-bottom: $gutter;
+
+  @include mq($from: s) {
+    font-size: to-rem(24);
+  }
+}
+
+.header-prose__credit {
+  color: $color-white;
+  font-family: $font-sans-serif;
+  font-size: to-rem(14);
+  line-height: $line-height-subtitle;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.story {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story-bar {
+  background-color: $color-sold-out-blue;
+  height: to-rem(4);
+  margin-bottom: $gutter;
+  margin-top: $gutter-quad;
+  width: to-rem(40);
+}
+
+.story-label {
+  color: $color-grey;
+  font-family: $font-sans-serif;
+  letter-spacing: 0.03em;
+  line-height: $line-height-title;
+  margin-bottom: $gutter;
+  margin-top: $gutter;
+  text-transform: uppercase;
+}
+
+.story-title {
+  color: $color-sold-out-blue;
+  font-family: $font-serif;
+  font-size: to-rem(22);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-title;
+  margin-bottom: $gutter-half;
+  margin-top: $gutter;
+  text-transform: uppercase;
+
+  > a {
+    @include sold-out-uppercase-link;
+  }
+}
+
+.story-image {
+  margin-bottom: $gutter-quad;
+  margin-top: $gutter;
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+  }
+}
+
+.intro-prose {
+  img {
+    float: right;
+    width: 50%;
+    clear: right;
+    margin-left: $gutter;
+    margin-bottom: $gutter;
+
+    @include mq($from: s) {
+      width: to-rem(300);
+    }
+  }
+}
